@@ -1,0 +1,40 @@
+# general
+gpu_id: 0
+use_gpu: True
+seed: 2020
+state: INFO
+reproducibility: True
+checkpoint_dir: 'saved'
+show_progress: True
+save_dataset: False
+save_dataloaders: False
+
+
+# training settings
+epochs: 500
+train_batch_size: 64
+learner: adam
+learning_rate: 0.0001
+eval_step: 1
+stopping_step: 3
+clip_grad_norm: ~
+weight_decay: 0.0
+neg_sampling: 
+
+
+
+# evaluation settings
+eval_args:
+  split: { 'LS': 'valid_and_test' }
+  group_by: user
+  order: TO
+  mode: full
+
+repeatable: True
+metrics: ["Recall","Precision","NDCG"]
+topk: [5,10,20]
+valid_metric: Recall@20
+valid_metric_bigger: True
+eval_batch_size: 8
+loss_decimal_place: 4
+metric_decimal_place: 4

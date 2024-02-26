@@ -1,0 +1,52 @@
+# dataset
+load_col:
+    inter: [user_id, item_id, rating, timestamp]
+    item: ['item_id','genre']
+MAX_ITEM_LIST_LENGTH: 50
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+
+# Filtering
+# val_interval: {'timestamp': "[1546264800,1577714400]"}
+filter_inter_by_user_or_item: True
+user_inter_num_interval: "[5,inf)"
+item_inter_num_interval: "[5,inf)"
+train_neg_sample_args: ~
+
+# B config
+h: 1
+sample_ratio: 1.0
+max_nodes_per_hop: 200
+gcn_output_dim: 32
+dense_output_dim: 64 #这个参数应该随数据集大小调整
+accum: cat
+drop_prob: 0.1
+conv_layer:
+    layer_name: GATConv
+    # layer_name: LGConv
+    layer_pramas: 
+        head: 3
+read_out_head: 1
+class_num: 2
+# clip_grad_norm:
+#     max_norm: 5.0
+loss_type: 'CE'
+
+
+trm_n_layers: 4
+trm_n_heads: 8
+trm_attribute_hidden_size: [64]
+trm_inner_size: 256
+trm_hidden_dropout_prob: 0.5
+trm_attn_dropout_prob: 0.3
+trm_hidden_act: 'gelu'
+trm_layer_norm_eps: 1e-12
+trm_initializer_range: 0.02
+trm_selected_features: ['class']
+trm_pooling_mode: 'sum'
+trm_weight_sharing: 'not'
+trm_fusion_type: 'no_attr'
+trm_lamdas: [10]
+trm_ttribute_predictor: 'linear'
