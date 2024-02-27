@@ -1,4 +1,4 @@
-# ISTN
+# ISTN（Model B in code）
 ## Introduction
 The framework implements a partial transfer recommendation model and a transfer sequential recommendation model in recent years. The framework is based on Recoble, with appropriate modifications to accomplish the transfer recommendation task.
 
